@@ -18,7 +18,7 @@ def stage(ctx):
                 "pythonpath": "src"
             }, {
                 "tool": "shell",
-                "cmd": "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-wheel python3-setuptools"
+                "cmd": "sudo apt-get update && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-wheel python3-setuptools"
             }, {
                 "tool": "shell",
                 "cwd": "sample-project-python",
@@ -28,7 +28,7 @@ def stage(ctx):
                 "action": "upload",
                 "cwd": "sample-project-python/dist",
                 "source": [
-                    "sampleproject-2.0.0-py3-none-any.whl", 
+                    "sampleproject-2.0.0-py3-none-any.whl",
                     "sampleproject-2.0.0.tar.gz"
                 ],
                 "public": True
