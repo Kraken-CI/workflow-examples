@@ -8,10 +8,10 @@ def stage(ctx):
         "parameters": [],
         "configs": [],
         "jobs": [{
-            "name": "huge log",
+            "name": "hello",
             "steps": [{
                 "tool": "shell",
-                "cmd": "cat /dev/urandom | tr -dc 'a-zA-Z0-9 ' | fold -w 80 | head -n 100"
+                "cmd": "cat /etc/*release*",
             }],
             "environments": [{
                 "system": "ubuntu/focal/amd64",
