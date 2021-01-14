@@ -7,7 +7,7 @@ def stage(ctx):
         "parameters": [],
         "configs": [],
         "flow_label": "bld-#{KK_CI_DEV_FLOW_SEQ}",
-        #"run_label": "run.#{KK_CI_DEV_RUN_SEQ}",
+        "run_label": "run.#{KK_CI_DEV_RUN_SEQ}",
         "jobs": [{
             "name": "seqs",
             "steps": [{
