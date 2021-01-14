@@ -20,7 +20,6 @@ def stage(ctx):
             "environments": [{
                 "system": "any",
                 "agents_group": "all",
-                "executor": "docker",
                 "config": "default"
             }]
         }]

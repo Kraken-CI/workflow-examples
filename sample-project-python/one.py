@@ -15,7 +15,7 @@ def stage(ctx):
                 "tool": "pytest",
                 "cwd": "sample-project-python",
                 "params": "-vv",
-#                "pythonpath": "src"
+                "pythonpath": "src"
             }, {
                 "tool": "shell",
                 "cmd": "sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3-wheel python3-setuptools"
