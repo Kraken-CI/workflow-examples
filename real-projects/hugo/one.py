@@ -25,7 +25,7 @@ def stage(ctx):
                 "action": "save",
                 "key": "one-key",
                 "paths": [
-                    "~/go/pkg/mod/"
+                    "$GOPATH/pkg/mod/"
                 ]
             }, {
                 "tool": "shell",
@@ -47,6 +47,7 @@ def stage(ctx):
             }, {
                 "tool": "gotest",
                 "cwd": "hugo",
+                "timeout": 500,
                 "params": "-p 1 ./..."
             }],
             "environments": [{
