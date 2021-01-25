@@ -2,7 +2,11 @@ def stage(ctx):
     return {
         "parent": "root",
         "triggers": {
-            "interval": "10h"
+            "repo": {
+                "url": "https://github.com/gohugoio/hugo.git",
+                "branch": "master",
+                "interval": "10h"
+            }
         },
         "parameters": [],
         "configs": [],
