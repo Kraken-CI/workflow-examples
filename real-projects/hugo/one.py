@@ -5,7 +5,7 @@ def stage(ctx):
             "repo": {
                 "url": "https://github.com/gohugoio/hugo.git",
                 "branch": "master",
-                "interval": "10h"
+                "interval": "2d"
             }
         },
         "parameters": [],
