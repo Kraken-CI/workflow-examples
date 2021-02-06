@@ -5,7 +5,7 @@ def stage(ctx):
             "repo": {
                 "url": "https://github.com/apache/lucene-solr.git",
                 "branch": "master",
-                "interval": "3d"
+                "interval": "2d"
             }
         },
         "parameters": [],
