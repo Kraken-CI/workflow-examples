@@ -30,13 +30,14 @@ def stage(ctx):
                 }
             }, {
                 "tool": "shell",
-                "cmd": "exit $(($RANDOM % 3))",
+                "cmd": "exit `shuf -i 0-3 -n 1`",
                 "attempts": 10,
                 "sleep_time_after_attempt": 4
             }],
             "environments": [{
-                "system": "any",
-                "agents_group": "all",
+                "system": "krakenci/ubuntu:20.04",
+                "agents_group": "docker",
+                "executor": "docker",
                 "config": "default"
             }]
         }]
