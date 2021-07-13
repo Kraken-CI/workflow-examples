@@ -3,7 +3,7 @@ def stage(ctx):
         "parent": "root",
         "triggers": {
             "repo": {
-                "url": "https://github.com/apache/lucene-solr.git",
+                "url": "https://github.com/apache/lucene.git",
                 "branch": "master",
                 "interval": "2d"
             }
@@ -16,16 +16,16 @@ def stage(ctx):
             "steps": [{
                 "tool": "git",
                 "timeout": 600,
-                "checkout": "https://github.com/apache/lucene-solr.git"
+                "checkout": "https://github.com/apache/lucene.git"
             }, {
                 "tool": "shell",
                 "timeout": 2500,
-                "cwd": "lucene-solr",
+                "cwd": "lucene",
                 "cmd": "./gradlew assemble -Dversion.suffix=`git rev-parse --short HEAD`-#{KK_FLOW_SEQ}"
             }, {
                 "tool": "artifacts",
                 "action": "upload",
-                "cwd": "lucene-solr/lucene/packaging/build/distributions/",
+                "cwd": "lucene/lucene/packaging/build/distributions/",
                 "source": [
                     "lucene-*.tgz",
                     "lucene-*.tgz.sha512"
@@ -34,15 +34,15 @@ def stage(ctx):
             }, {
                 "tool": "shell",
                 "timeout": 4000,
-                "cwd": "lucene-solr",
+                "cwd": "lucene",
                 "cmd": "./gradlew -p lucene/core test -Dversion.suffix=`git rev-parse --short HEAD`-#{KK_FLOW_SEQ}"
             }, {
                 "tool": "shell",
-                "cwd": "lucene-solr",
+                "cwd": "lucene",
                 "cmd": "find . -name '*.xml' | grep test-results"
             }, {
                 "tool": "junit_collect",
-                "cwd": "lucene-solr",
+                "cwd": "lucene",
                 "file_glob": "**/test-results/test/*.xml"
             }],
             "environments": [{
