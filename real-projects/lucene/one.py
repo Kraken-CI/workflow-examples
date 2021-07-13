@@ -4,7 +4,7 @@ def stage(ctx):
         "triggers": {
             "repo": {
                 "url": "https://github.com/apache/lucene.git",
-                "branch": "master",
+                "branch": "main",
                 "interval": "2d"
             }
         },
@@ -16,7 +16,8 @@ def stage(ctx):
             "steps": [{
                 "tool": "git",
                 "timeout": 600,
-                "checkout": "https://github.com/apache/lucene.git"
+                "checkout": "https://github.com/apache/lucene.git",
+                "branch": "main"
             }, {
                 "tool": "shell",
                 "timeout": 2500,
