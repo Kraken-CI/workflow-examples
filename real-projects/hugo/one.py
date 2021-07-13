@@ -55,7 +55,7 @@ def stage(ctx):
                 "params": "-p 1 ./..."
             }],
             "environments": [{
-                "system": "krakenci/golang:1.15",
+                "system": "krakenci/golang:1.16",
                 "executor": "docker",
                 "agents_group": "all",
                 "config": "default"
