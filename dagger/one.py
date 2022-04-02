@@ -18,7 +18,8 @@ def stage(ctx):
             }, {
                 "tool": "shell",
                 "cmd": "dagger do build --log-format plain",
-                "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp"
+                "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp",
+                "timeout": 240
             }, {
                 "tool": "shell",
                 "cmd": "ls -al _build",
