@@ -16,14 +16,28 @@ def stage(ctx):
                 "checkout": "https://github.com/dagger/dagger",
                 "branch": "v0.2.4"
             }, {
+                "tool": "cache",
+                "action": "restore",
+                "keys": ["dgr"]
+            }, {
                 "tool": "shell",
-                "cmd": "dagger do build --log-format plain",
-                "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp",
-                "timeout": 240
+                "cmd": "mkdir -p ~/dgr-cache && ls -al ~/dgr-cache",
+            }, {
+                "tool": "shell",
+                "cmd": "dagger do build --log-format plain --cache-from type=local,src=$HOME/dgr-cache --cache-to type=local,mode=max,dest=$HOME/dgr-cache",
+                "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp"
             }, {
                 "tool": "shell",
                 "cmd": "ls -al _build",
                 "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp"
+            }, {
+                "tool": "shell",
+                "cmd": "ls -al ~/dgr-cache",
+            }, {
+                "tool": "cache",
+                "action": "save",
+                "key": "dgr",
+                "paths": ["~/dgr-cache"]
             }],
             "environments": [{
                 "system": "krakenci/bld-kraken",
