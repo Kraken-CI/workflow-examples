@@ -33,6 +33,16 @@ def stage(ctx):
                 "cmd": "exit `shuf -i 0-3 -n 1`",
                 "attempts": 10,
                 "sleep_time_after_attempt": 4
+            }, {
+                "tool": "shell",
+                "script": """
+                    sudo apt install -y zsh
+                    which zsh
+                """
+            }, {
+                "tool": "shell",
+                "cmd": "echo $0",
+                "shell_exe": "zsh"
             }],
             "environments": [{
                 "system": "krakenci/ubuntu:20.04",
