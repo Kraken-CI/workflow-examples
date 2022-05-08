@@ -15,10 +15,10 @@ def stage(ctx):
             "environments": [{
                 "system": [
                     "ubuntu/focal/amd64",
-                    "centos/8/amd64",
+                    "centos/8-Stream/amd64",
                     "debian/buster/amd64",
-                    "opensuse/15.2/amd64",
-                    "fedora/32/amd64"
+                    "opensuse/15.3/amd64",
+                    "fedora/35/amd64"
                 ],
                 "agents_group": "lxd",
                 "executor": "lxd",
