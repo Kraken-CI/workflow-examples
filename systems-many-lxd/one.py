@@ -18,7 +18,7 @@ def stage(ctx):
                     "centos/9-Stream/amd64",
                     "debian/10/amd64",  # buster
                     "debian/11/amd64",  # bullseye
-                    "fedora/35/amd64"
+                    "fedora/35/amd64",
                     "opensuse/15.3/amd64",
                     "ubuntu/focal/amd64",
                     "ubuntu/jammy/amd64",
