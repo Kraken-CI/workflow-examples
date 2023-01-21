@@ -9,38 +9,26 @@ def stage(ctx):
         "jobs": [{
             "name": "dagger",
             "steps": [{
-                "tool": "shell",
-                "cmd": "cd /usr/local && curl -L https://dl.dagger.io/dagger/install.sh | sudo sh && dagger version"
-            }, {
+                "name": "Checkout Dagger example",
                 "tool": "git",
-                "checkout": "https://github.com/dagger/dagger",
-                "branch": "v0.2.4"
+                "checkout": "https://github.com/dagger/examples",
+                "branch": "main"
             }, {
-                "tool": "cache",
-                "action": "restore",
-                "keys": ["dgr"]
-            }, {
+                "name": "Install Dagger Python SDK",
                 "tool": "shell",
-                "cmd": "mkdir -p ~/dgr-cache && ls -al ~/dgr-cache",
+                "script": """
+                   python3.10 -m venv venv
+                   ./venv/bin/pip install -U pip
+                   ./venv/bin/pip install dagger-io
+                """
             }, {
+                "name": "Build using Dagger",
                 "tool": "shell",
-                "cmd": "dagger do build --log-format plain --cache-from type=local,src=$HOME/dgr-cache --cache-to type=local,mode=max,dest=$HOME/dgr-cache",
-                "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp"
-            }, {
-                "tool": "shell",
-                "cmd": "ls -al _build",
-                "cwd": "dagger/pkg/universe.dagger.io/examples/todoapp"
-            }, {
-                "tool": "shell",
-                "cmd": "ls -al ~/dgr-cache",
-            }, {
-                "tool": "cache",
-                "action": "save",
-                "key": "dgr",
-                "paths": ["~/dgr-cache"]
+                "cwd": "examples/python/basic-example",
+                "cmd": "../../../venv/bin/python3 test.py",
             }],
             "environments": [{
-                "system": "krakenci/bld-kraken",
+                "system": "krakenci/bld-kraken-22.04:20230121",
                 "executor": "docker",
             	"agents_group": "all",
                 "config": "default"
