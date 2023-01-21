@@ -47,7 +47,7 @@ def stage(ctx):
                 "file_glob": "**/test-results/test/*.xml"
             }],
             "environments": [{
-                "system": "krakenci/openjdk:11",
+                "system": "krakenci/openjdk:17",
                 "executor": "docker",
                 "agents_group": "all",
                 "config": "default"
