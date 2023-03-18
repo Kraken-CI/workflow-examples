@@ -1,3 +1,1 @@
-{
-    "test_sets": ["scope-a", "scope-b"]
-}
+["scope-a", "scope-b"]
