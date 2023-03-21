@@ -22,7 +22,7 @@ def stage(ctx):
                 "tool": "shell",
                 "timeout": 2500,
                 "cwd": "lucene",
-                "cmd": "./gradlew assemble -Dversion.suffix=`git rev-parse --short HEAD`-#{KK_FLOW_SEQ}"
+                "cmd": "./gradlew assemble -Dversion.suffix=`git rev-parse --short HEAD`-#{flow.seq.shared}"
             }, {
                 "tool": "artifacts",
                 "action": "upload",
@@ -36,7 +36,7 @@ def stage(ctx):
                 "tool": "shell",
                 "timeout": 4000,
                 "cwd": "lucene",
-                "cmd": "./gradlew -p lucene/core test -Dversion.suffix=`git rev-parse --short HEAD`-#{KK_FLOW_SEQ}"
+                "cmd": "./gradlew -p lucene/core test -Dversion.suffix=`git rev-parse --short HEAD`-#{flow.seq.shared}"
             }, {
                 "tool": "shell",
                 "cwd": "lucene",
