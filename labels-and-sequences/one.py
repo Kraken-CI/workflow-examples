@@ -12,7 +12,13 @@ def stage(ctx):
             "name": "seqs",
             "steps": [{
                 "tool": "shell",
-                "cmd": "echo 'flow.shared:#{flow.seq.shared} flow.own:#{flow.seq.own} #{flow.kind} #{args.branch}'"
+                "cmd": "echo 'branch: #{args.branch}, flow kind: #{flow.kind} '"
+            }, {
+                "tool": "shell",
+                "cmd": "echo 'flow.shared: #{flow.seq.shared} flow.own: #{flow.seq.own}'"
+            }, {
+                "tool": "shell",
+                "cmd": "echo 'run.shared:#{run.seq.shared} run.own:#{run.seq.own}'"
             }],
             "environments": [{
                 "system": "any",
