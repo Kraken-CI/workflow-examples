@@ -6,13 +6,13 @@ def stage(ctx):
         },
         "parameters": [],
         "configs": [],
-        "flow_label": "bld-#{KK_CI_DEV_FLOW_SEQ}",
-        "run_label": "run.#{KK_CI_DEV_RUN_SEQ}",
+        "flow_label": "bld-#{flow.seq.own}",
+        "run_label": "run.#{run.seq.own}",
         "jobs": [{
             "name": "seqs",
             "steps": [{
                 "tool": "shell",
-                "cmd": "echo #{KK_FLOW_SEQ} #{KK_CI_DEV_FLOW_SEQ} #{KK_FLOW_TYPE} #{KK_BRANCH}"
+                "cmd": "echo 'flow.shared:#{flow.seq.shared} flow.own:#{flow.seq.own} #{flow.kind} #{args.branch}"
             }],
             "environments": [{
                 "system": "any",
