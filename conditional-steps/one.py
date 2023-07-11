@@ -41,11 +41,11 @@ def stage(ctx):
             }, {
                 "when": "always",
                 "tool": "shell",
-                "cmd": "echo 'hello world #{job.id} 2 #{job.steps[0].result}' && sleep 5"
+                "cmd": "echo 'hello world always' && sleep 5"
             }, {
                 "when": "job.steps[step.index - 1].result.duration > 3",
                 "tool": "shell",
-                "cmd": "echo 'hello world #{job.steps[step.index - 1].result.duration}'"
+                "cmd": "echo 'hello world #{job.steps[step.index - 1].result}'"
             }],
             "environments": [{
                 "system": "any",
