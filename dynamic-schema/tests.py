@@ -1,6 +1,6 @@
 def stage(ctx):
     jobs = []
-    for ts in ctx.flow.data.tests:
+    for ts in (ctx.flow.data.tests or ['scope-default']):
         jobs.append({
             "name": "tests %s" % ts,
             "steps": [{
@@ -9,7 +9,7 @@ def stage(ctx):
             }],
             "environments": [{
                 "executor": "docker",
-                "system": ctx.flow.data.systems,
+                "system": ctx.flow.data.systems or "ubuntu:20.04",
                 "agents_group": "all",
                 "config": "default"
             }]
